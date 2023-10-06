@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ESTG Mapper</string>
+    <string name="title_home">Piso 1</string>
+    <string name="title_dashboard">Piso 2</string>
+    <string name="title_notifications">Piso 3</string>
+    <!--<string-array name="choice_items">
+        <item>Salas</item>
+        <item>Laboratórios</item>
+        <item>Auditórios</item>
+        <item>Gabinetes</item>
+        <item>WC</item>
+        <item>Bar e Cantina</item>
+        <item>Serviços Académicos</item>
+        <item>Gab. Apoio Cursos</item>
+        <item>Regentes</item>
+        <item>Balcão Único</item>
+        <item>Associação de Estudantes</item>
+        <item>Saidas de Emergência</item>
+    </string-array>-->
+</resources>

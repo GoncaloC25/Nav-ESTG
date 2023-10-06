@@ -1,4 +1,4 @@
-[README.md](https://github.com/GoncaloC25/ESTG_Mapper/files/12834902/README.md)# ESTG Mapper
+# ESTG Mapper
 
 **ESTG Mapper** is a user-friendly application designed to simplify navigation within the IPVC-ESTG building. This handy tool is specifically crafted for students, faculty, and visitors who often find themselves lost in the maze of classrooms, labs, and offices. With intuitive features and a sleek interface, ESTG Mapper ensures that finding your way around the building has never been easier.
 

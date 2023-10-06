@@ -2,7 +2,7 @@
 
 **ESTG Mapper** is a user-friendly application designed to simplify navigation within the IPVC-ESTG building. This handy tool is specifically crafted for students, faculty, and visitors who often find themselves lost in the maze of classrooms, labs, and offices. With intuitive features and a sleek interface, ESTG Mapper ensures that finding your way around the building has never been easier.
 
-[![Shields.io](https://img.shields.io/badge/Download-APK-green?link=https%3A%2F%2Fgithub.com%2FGoncaloC25%2FESTG_Mapper%2Freleases%2Fdownload%2FRelease%2FESTG.Mapper.apk
+[![Shields.io](https://img.shields.io/badge/Download-APK-orange?link=https%3A%2F%2Fgithub.com%2FGoncaloC25%2FESTG_Mapper%2Freleases%2Fdownload%2FRelease%2FESTG.Mapper.apk
 )](https://github.com/GoncaloC25/ESTG_Mapper/releases/download/Release/ESTG.Mapper.apk)
 
 ## Features

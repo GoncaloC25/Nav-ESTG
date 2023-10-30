@@ -1,3 +1,4 @@
+
 # *Nav @ESTG*
 
 ***Nav @ESTG*** is a user-friendly application designed to simplify navigation within the IPVC-ESTG building. This handy tool is specifically crafted for students, faculty, and visitors who often find themselves lost in the maze of classrooms, labs, and offices. With intuitive features and a sleek interface, *Nav @ESTG* ensures that finding your way around the building has never been easier.
@@ -33,6 +34,7 @@ We welcome contributions from the community to enhance *Nav @ESTG* further. If y
 ## License
 
 *Nav @ESTG* is licensed under the [MIT License](LICENSE), which means you are free to use, modify, and distribute the application. We encourage developers and enthusiasts to collaborate and improve the app for the benefit of the entire community.
+
 
 ## Feedback and Support
 

@@ -88,7 +88,7 @@
             app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/piso1___labs" />
+            app:srcCompat="@drawable/piso1___labs3" />
 
         <ImageView
             android:id="@+id/imgAuds"

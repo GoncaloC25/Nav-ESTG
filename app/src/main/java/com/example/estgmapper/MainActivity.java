@@ -1,7 +1,10 @@
 package com.example.estgmapper;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -10,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ZoomControls;
 import androidx.annotation.NonNull;
@@ -51,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
+        int whatsSelected;
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -98,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         originalScaleY = imageView.getScaleY();
 
         Button resetButton = findViewById(R.id.button);
+
+        visible(imgSalas, imgLabs, imgAuds, imgBeC, imgOS, imgGabs, imgWC);
+
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -273,62 +283,29 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (currentItem){
                     case "Salas":
-                        imgSalas.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgSalas.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                     case "Laboratórios":
-                        imgLabs.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgLabs.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                     case "Auditórios":
-                        imgAuds.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgAuds.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                     case "Gabinetes":
-                        imgGabs.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgGabs.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                     case "Bar & Cantina":
-                        imgBeC.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgBeC.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                     case "Outros Serviços":
-                        imgOS.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgOS.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                     case "WC's":
-                        imgWC.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+                        imgWC.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                         break;
                 }
 
-            });
-
-            // alert dialog shouldn't be cancellable
-            builder.setCancelable(false);
-
-            // handle the positive button of the dialog
-            builder.setPositiveButton("FILTRAR", (dialog, which) -> {});
-
-            // handle the negative button of the alert dialog
-            builder.setNegativeButton("CANCELAR", (dialog, which) -> {});
-
-            // handle the neutral button of the dialog to clear the selected items boolean checkedItem
-            builder.setNeutralButton("LIMPAR", (dialog, which) -> {
-                Arrays.fill(checkedItems, false);
-                imgSalas.setVisibility(View.VISIBLE);
-                imgLabs.setVisibility(View.VISIBLE);
-                imgAuds.setVisibility(View.VISIBLE);
-                imgGabs.setVisibility(View.VISIBLE);
-                imgBeC.setVisibility(View.VISIBLE);
-                imgOS.setVisibility(View.VISIBLE);
-                imgWC.setVisibility(View.VISIBLE);
-            });
-
-            // create the builder
-            builder.create();
-
-            // create the alert dialog with the alert dialog builder instance
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
-
-            tvSelectedItemsPreview.setText(lastFilterApplied);
-
-            // Check if there are any selected items after the dialog is shown
-            alertDialog.setOnDismissListener(dialogInterface -> {
+            }).setOnDismissListener(dialogInterface -> {
                 boolean hasSelectedItems = false;
                 for (boolean checkedItem : checkedItems) {
                     if (checkedItem) {
@@ -347,6 +324,83 @@ public class MainActivity extends AppCompatActivity {
                     lastFilterApplied = null;
                 }
             });
+
+
+            ;
+
+            // alert dialog shouldn't be cancellable
+            builder.setCancelable(false);
+
+            // handle the positive button of the dialog
+            builder.setPositiveButton("FILTRAR", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    boolean allOptionsDeselected = true;
+
+                    for (boolean isChecked : checkedItems) {
+                        if (isChecked) {
+                            allOptionsDeselected = false;
+                            break;
+                        }
+                    }
+
+                    if (allOptionsDeselected) {
+                        visible(imgSalas, imgLabs, imgAuds, imgBeC, imgOS, imgGabs, imgWC);
+                    } else {
+                        // Check for deselected items and perform actions inside the switch statement for deselected items
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            if (!checkedItems[i]) {
+                                String deselectedItem = selectedItems.get(i);
+                                switch (deselectedItem) {
+                                    case "Salas":
+                                        imgSalas.setVisibility(View.INVISIBLE);
+                                        break;
+                                    case "Laboratórios":
+                                        imgLabs.setVisibility(View.INVISIBLE);
+                                        break;
+                                    case "Auditórios":
+                                        imgAuds.setVisibility(View.INVISIBLE);
+                                        break;
+                                    case "Gabinetes":
+                                        imgGabs.setVisibility(View.INVISIBLE);
+                                        break;
+                                    case "Bar & Cantina":
+                                        imgBeC.setVisibility(View.INVISIBLE);
+                                        break;
+                                    case "Outros Serviços":
+                                        imgOS.setVisibility(View.INVISIBLE);
+                                        break;
+                                    case "WC's":
+                                        imgWC.setVisibility(View.INVISIBLE);
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
+                    dialog.dismiss(); // Dismiss the dialog after processing deselected items
+                }
+            });
+
+                    // handle the negative button of the alert dialog
+            builder.setNegativeButton("CANCELAR", (dialog, which) -> {});
+
+            // handle the neutral button of the dialog to clear the selected items boolean checkedItem
+            builder.setNeutralButton("LIMPAR", (dialog, which) -> {
+                Arrays.fill(checkedItems, false);
+                visible(imgSalas, imgLabs, imgAuds, imgBeC, imgOS, imgGabs, imgWC);
+            });
+
+            // create the builder
+            builder.create();
+
+            // create the alert dialog with the alert dialog builder instance
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+            tvSelectedItemsPreview.setText(lastFilterApplied);
+
+            // Check if there are any selected items after the dialog is shown
         });
 
     }
@@ -387,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
         int[] imageIds = {
                 R.drawable.piso1___escadas___entradas,
                 R.drawable.piso1___salas,
-                R.drawable.piso1___labs,
+                R.drawable.piso1___labs3,
                 R.drawable.piso1___auditorios,
                 R.drawable.piso1___gabinetes,
                 R.drawable.piso1___comida,
@@ -416,7 +470,7 @@ public class MainActivity extends AppCompatActivity {
         int[] imageIds = {
                 R.drawable.piso1___escadas___entradas,
                 R.drawable.piso1___salas,
-                R.drawable.piso1___labs,
+                R.drawable.piso1___labs3,
                 R.drawable.piso1___auditorios,
                 R.drawable.piso1___gabinetes,
                 R.drawable.piso1___comida,
@@ -495,5 +549,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private static void visible(ImageView imgSalas, ImageView imgLabs, ImageView imgAuds, ImageView imgBeC, ImageView imgOS, ImageView imgGabs, ImageView imgWC) {
 
+        imgSalas.setVisibility(View.VISIBLE);
+        imgLabs.setVisibility(View.VISIBLE);
+        imgAuds.setVisibility(View.VISIBLE);
+        imgGabs.setVisibility(View.VISIBLE);
+        imgBeC.setVisibility(View.VISIBLE);
+        imgOS.setVisibility(View.VISIBLE);
+        imgWC.setVisibility(View.VISIBLE);
+
+    }
 }
+
+

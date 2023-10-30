@@ -1,5 +1,5 @@
 
-# *Nav @ESTG*
+# Nav @ESTG
 
 ***Nav @ESTG*** is a user-friendly application designed to simplify navigation within the IPVC-ESTG building. This handy tool is specifically crafted for students, faculty, and visitors who often find themselves lost in the maze of classrooms, labs, and offices. With intuitive features and a sleek interface, *Nav @ESTG* ensures that finding your way around the building has never been easier.
 

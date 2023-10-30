@@ -4,7 +4,7 @@
 ***Nav @ESTG*** is a user-friendly application designed to simplify navigation within the IPVC-ESTG building. This handy tool is specifically crafted for students, faculty, and visitors who often find themselves lost in the maze of classrooms, labs, and offices. With intuitive features and a sleek interface, *Nav @ESTG* ensures that finding your way around the building has never been easier.
 
 [![Shields.io](https://img.shields.io/badge/Download-APK-orange?link=https%3A%2F%2Fgithub.com%2FGoncaloC25%2FESTG_Mapper%2Freleases%2Fdownload%2FRelease%2FESTG.Mapper.apk
-)](https://github.com/GoncaloC25/ESTG_Mapper/releases/download/Release/ESTG.Mapper.apk)
+)]((https://github.com/GoncaloC25/Nav-ESTG/releases/download/V1.2.1/Nav@ESTG_V1.2.1.apk))
 
 ## Features
 
